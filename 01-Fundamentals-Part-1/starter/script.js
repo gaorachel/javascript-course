@@ -104,4 +104,58 @@ console.log(thisYear - 1990 > thisYear - 2000)
 
 let a, b;
 a = b = 25 - 10 - 5 // a = b, b = 25 - 10 - 5
-console.log(a, b)
+console.log(a, b);
+
+
+////////////////////////////////////////////////////////////
+/*
+Coding Challenge #1
+
+Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula:
+BMI = mass / height ** 2 = mass / (height * height) (mass in kg and height in meter).
+
+Your tasks:
+
+    1. Store Mark's and John's mass and height in variables
+    2. Calculate both their BMIs using the formula (you can even implement both versions)
+    3. Createa Boolean variable 'markHigherBMI' containing information about whether Mark has a higher BMI than John.
+
+Test data:
+    § Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+    § Data 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76 m tall.
+
+GOOD LUCK 😀
+ */
+
+let massMark
+let massJohn
+let heightMark
+let heightJohn
+
+function bmi(mass, height){
+    return mass / height ** 2
+}
+
+massMark = 78
+heightMark = 1.69
+massJohn = 92
+heightJohn = 1.95
+
+// massMark = 95
+// heightMark = 1.88
+// massJohn = 85
+// heightJohn = 1.76
+
+const bmiMark = bmi(massMark, heightMark)
+const bmiJohn = bmi(massJohn, heightJohn)
+
+const markHigherBMI = bmiMark > bmiJohn
+
+if (markHigherBMI) {
+    console.log(`Mark's BMI is ${Math.round(bmiMark)} and John's BMI is ${Math.round(bmiJohn)}. 
+So Mark has higher BMI is ${markHigherBMI}.`)
+} else {
+    console.log(`Mark's BMI is ${bmiMark.toFixed(2)} and John's BMI is ${bmiJohn.toFixed(2)}. 
+So Mark's BMI is lower than John's.`)
+}
+
