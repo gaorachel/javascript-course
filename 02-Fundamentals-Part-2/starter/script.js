@@ -115,18 +115,90 @@ GOOD LUCK 😀
 // const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 // console.log(`Total: ${totals}`);
 
-const personalInfo = {
-  firstName: "Rachel",
-  lastName: "Gao",
-  age: 29,
-  job: "Data Analyst",
-  favFood: ["Rice Pudding", "Chicken Katsu", "bread"],
+// const personalInfo = {
+//   firstName: "Rachel",
+//   lastName: "Gao",
+//   brithYear: 1800,
+//   job: "Data Analyst",
+//   favFood: ["Rice Pudding", "Chicken Katsu", "bread"],
+//   // calAge: function (brithYear) {
+//   //   return 2023 - brithYear;
+//   // },
+//   // calAge: function () {
+//   //   return 2023 - this.brithYear;
+//   // },
+//   calAge: function () {
+//     this.age = 2023 - this.brithYear; // if we need this func multiple times, to aovid mutiple calculation, we can make the retult as a variable - age in this case.
+//     return this.age;
+//   },
+// };
+
+// // const countryLocation = prompt("where are you live?");
+// // personalInfo["location"] = countryLocation;
+// console.log(personalInfo);
+
+// console.log(personalInfo.favFood[0]);
+
+// // console.log(personalInfo[favFood[0]]); // this is wrong
+// // console.log(personalInfo["calAge"](personalInfo.brithYear));
+// // console.log(personalInfo["calAge"](1900));
+// // console.log(personalInfo.calAge(1900));
+// console.log(personalInfo["calAge"]());
+
+// console.log(personalInfo.calAge); // only show functions itself
+// console.log(personalInfo["calAge"]()); // actually run the function
+
+// console.log(personalInfo.age);
+
+///////////////////////////////////////
+// Coding Challenge #3
+
+/*
+Let's go back to Mark and John comparing their BMIs! This time, let's use objects to implement the calculations! Remember: BMI = mass / height ** 2 = mass / (height * height). (mass in kg and height in meter)
+
+1. For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same method on both objects). Store the BMI value to a property, and also return it from the method.
+3. Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!"
+
+TEST DATA: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m tall.
+
+GOOD LUCK 😀
+*/
+
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  },
 };
 
-const countryLocation = prompt("where are you live?");
-personalInfo["location"] = countryLocation;
-console.log(personalInfo);
+const john = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  },
+};
+// console.log(mark);
+// console.log(john);
 
-console.log(personalInfo.favFood[0]);
-// console.log(personalInfo[favFood[0]]); // this is wrong
-// some test
+// console.log(mark.bim, john.bim);
+// console.log(mark.calcBMI());
+// console.log(mark);
+
+if (mark.calcBMI() > john.calcBMI()) {
+  console.log(
+    `${mark.fullName}'s BMI(${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})`
+  );
+} else if (mark.calcBMI() < john.calcBMI()) {
+  console.log(
+    `${john.fullName}'s BMI(${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})`
+  );
+} else {
+  console.log("Mark and John have same BMI!!!");
+}
