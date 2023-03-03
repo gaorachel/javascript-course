@@ -101,16 +101,31 @@ HINT: Remember that an array needs a value in each position, and that value can 
 GOOD LUCK 😀
 */
 
-function calcTip(bill) {
-  if (bill >= 50 && bill <= 300) {
-    return bill * 0.15;
-  } else {
-    return bill * 0.2;
-  }
-}
+// function calcTip(bill) {
+//   if (bill >= 50 && bill <= 300) {
+//     return bill * 0.15;
+//   } else {
+//     return bill * 0.2;
+//   }
+// }
 
-const bills = [125, 555, 44];
-const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
-console.log(`Tips: ${tips}`);
-const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
-console.log(`Total: ${totals}`);
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+// console.log(`Tips: ${tips}`);
+// const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+// console.log(`Total: ${totals}`);
+
+const personalInfo = {
+  firstName: "Rachel",
+  lastName: "Gao",
+  age: 29,
+  job: "Data Analyst",
+  favFood: ["Rice Pudding", "Chicken Katsu", "bread"],
+};
+
+const countryLocation = prompt("where are you live?");
+personalInfo["location"] = countryLocation;
+console.log(personalInfo);
+
+console.log(personalInfo.favFood[0]);
+// console.log(personalInfo[favFood[0]]); // this is wrong
