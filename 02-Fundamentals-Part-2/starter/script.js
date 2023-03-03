@@ -129,3 +129,4 @@ console.log(personalInfo);
 
 console.log(personalInfo.favFood[0]);
 // console.log(personalInfo[favFood[0]]); // this is wrong
+// some test
