@@ -14,46 +14,51 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1; // get a random number be
 let score = 20;
 let highscore = 0;
 
+console.log(document.querySelector(".score"));
+
+const displayMsg = function (cls, msg) {
+  document.querySelector(`.${cls}`).textContent = msg;
+};
+
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
-  console.log(guess, typeof guess);
+  // console.log(guess, typeof guess);
 
   if (!guess) {
-    document.querySelector(".message").textContent = "No Number";
+    displayMsg("message", "No Number");
   } else if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "Correct Number!";
-
-    document.querySelector(".number").textContent = secretNumber;
+    displayMsg("message", "Correct Number!");
+    displayMsg("number", secretNumber);
     document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem";
 
     if (score > highscore) {
       highscore = score;
-      document.querySelector(".highscore").textContent = highscore;
+      displayMsg("highscore", highscore);
     } else {
-      document.querySelector(".highscore").textContent = highscore;
+      displayMsg("highscore", highscore);
     }
   } else if (guess !== secretNumber) {
     if (score > 0) {
-      document.querySelector(".message").textContent =
-        guess > secretNumber ? "Too High!" : "Too Low!";
+      displayMsg("message", guess > secretNumber ? "Too High!" : "Too Low!");
       score--;
-      document.querySelector(".score").textContent = score;
+
+      displayMsg("score", score);
     } else {
-      document.querySelector(".message").textContent = "GAME OVER!";
+      displayMsg("message", "GAME OVER!");
+      displayMsg("score", 0);
     }
   }
 });
 
 document.querySelector(".again").addEventListener("click", function () {
-  document.querySelector(".message").textContent = "Start guessing...";
-
-  document.querySelector(".score").textContent = 20;
+  displayMsg("message", "Start guessing..");
+  score = 20;
+  displayMsg("score", 20);
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  //   console.log(secretNumber);
 
   document.querySelector(".guess").value = "";
-  document.querySelector(".number").textContent = "?";
+  displayMsg("number", "?");
 
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".number").style.width = "15rem";
