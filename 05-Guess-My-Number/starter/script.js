@@ -10,7 +10,7 @@
 // console.log((document.querySelector(".guess").value = 22));
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1; // get a random number between 1 and 20
-// console.log(secretNumber);
+console.log(secretNumber);
 let score = 20;
 let highscore = 0;
 
