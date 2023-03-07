@@ -27,3 +27,21 @@ for (let i = 0; i < btnsShowModal.length; i++) {
   // console.log(modal, overlay); // now "hidden" class has been removed from the class.
   btnCloseModal.addEventListener("click", closeModal);
 }
+
+document.addEventListener("keydown", function (event) {
+  //   console.log(`Key [${event.key.toUpperCase()}] was pressed`);
+  //   console.log(typeof event.key);
+  //   console.log(event.key);
+  if (event.key === "Escape") {
+    if (modal.classList.contains("hidden") != true) {
+      closeModal();
+    }
+  }
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "1") {
+    openModal();
+    document.addEventListener("keyup", closeModal);
+  }
+});
