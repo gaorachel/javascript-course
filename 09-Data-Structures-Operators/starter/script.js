@@ -27,7 +27,10 @@ const restaurant = {
   },
 };
 
-const [x, y, z] = [2, 3, 4];
+// const [x, y, z] = [2, 3, 4];
+const [x, y, ...z] = [2, 3, 4, 5, 6];
+console.log(x, y, z); // z becomes a new array [4, 5, 6] - only select the rest elements and ...z (rest pattern) must be the last element
+
 console.log(x, y, z);
 
 let [a, b, c] = [1, 2];
@@ -49,3 +52,14 @@ const {
   memu = [],
 } = restaurant; // same as pyton
 console.log(name1, openingHours, categories);
+
+// Spread Operator
+const arr = [1, 2, 3];
+console.log([...arr]);
+console.log(arr);
+console.log(...arr);
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+const str = "abcdefg";
+console.log(...str);
