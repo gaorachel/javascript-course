@@ -3,29 +3,29 @@
 // const flights =
 //   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
-// // Data needed for first part of the section
-// const restaurant = {
-//   name1: "Classico Italiano",
-//   location: "Via Angelo Tavanti 23, Firenze, Italy",
-//   categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-//   starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-//   mainMenu: ["Pizza", "Pasta", "Risotto"],
+// Data needed for first part of the section
+const restaurant = {
+  name1: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-//   openingHours: {
-//     thu: {
-//       open: 12,
-//       close: 22,
-//     },
-//     fri: {
-//       open: 11,
-//       close: 23,
-//     },
-//     sat: {
-//       open: 0, // Open 24 hours
-//       close: 24,
-//     },
-//   },
-// };
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+};
 
 // for (const day of Object.keys(restaurant.openingHours)) console.log(day);
 // for (const time of Object.values(restaurant.openingHours.thu))
@@ -190,3 +190,73 @@ for (let [team, odd] of Object.entries(game.odds)) {
 // for (const [idx, player] of Object.entries(game.scored)){
 //   if (game.scored[idx] = )
 // }
+
+const foodSet = new Set([
+  "pizza",
+  "bread",
+  "pasta",
+  "bread",
+  "pasta",
+  "soup",
+  "soup",
+]);
+console.log(foodSet);
+console.log(foodSet.has("soup"));
+console.log(foodSet.add("potato"));
+console.log(foodSet);
+console.log(foodSet.delete("bread"));
+
+for (const food of foodSet) console.log(food);
+
+const arrFoodSet = [...foodSet];
+console.log(arrFoodSet);
+console.log(foodSet.size);
+console.log(arrFoodSet.size); // wrong
+
+const rest = new Map();
+rest.set("name", "big easy");
+rest
+  .set("foodType", "turkish")
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "we are open")
+  .set(false, "our are closed");
+console.log(rest);
+
+console.log(rest.get("open"));
+
+const currentTime = 10;
+console.log(
+  rest.get(currentTime > rest.get("open") && currentTime < rest.get("close"))
+);
+console.log(rest.has("foodType"));
+
+console.log(rest.size);
+
+const question = new Map([
+  ["question", "what is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "Python"],
+  [4, "JS"],
+  ["answer", 4],
+  [true, "correct!"],
+  [false, "try again!"],
+]);
+
+console.log(question);
+const openingHourMap = new Map(Object.entries(restaurant.openingHours));
+console.log(openingHourMap);
+
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+
+// const answer = Number(prompt("Your Answer"));
+console.log(question.get(answer === question.get("answer")));
+
+// Convert Map to Array
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
