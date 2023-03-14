@@ -396,6 +396,7 @@ const convertor = function () {
   console.log(rows);
 
   // for ([idx, row] of rows.entries)
+  // console.log(`${ab.padEnd(20)}${"✅".repeat(idx + 1)}`);
 
   let i = 1;
   for (const row of rows) {
