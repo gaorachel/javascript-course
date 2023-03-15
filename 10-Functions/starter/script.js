@@ -116,53 +116,77 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 GOOD LUCK 😀
 */
 
-const poll = {
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section 😃
+//   answers: new Array(4).fill(0),
+// };
+
+// const textFormatter = function () {
+//   let text = `${poll.question}\n`;
+//   for (const option of poll.options.values()) {
+//     text = text + `${option}\n`;
+//   }
+//   text = text + '(Write option number)';
+//   return text;
+// };
+
+// const displayResults = function (answerArr, type = 'object') {
+//   if (type) console.log(answerArr);
+//   else console.log(`Poll results are ${answerArr.toString()}`);
+// };
+
+// const answerColletor = function () {
+//   const answer = Number(prompt(textFormatter()));
+//   if (answer in [0, 1, 2, 3]) this.answers[answer]++;
+//   else alert('The input is wrong');
+
+//   const answerArr = this.answers;
+//   console.log(answerArr);
+//   const type = typeof answerArr;
+//   console.log(type);
+//   displayResults(answerArr, type);
+
+//   poll.registerNewAnswer = answerColletor.bind(poll);
+
+//   document
+//     .querySelector('.poll')
+//     .addEventListener('click', poll.registerNewAnswer);
+//   console.log(poll);
+
+////// second solution
+const poll2 = {
   question: 'What is your favourite programming language?',
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
+
+  registerNewAnswer() {
+    const answer2 = Number(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)}`
+      )
+    );
+    console.log(answer2, typeof answer2);
+    if (answer2 in [0, 1, 2, 3]) {
+      this.answers[answer2]++;
+      this.displayResults();
+    } else {
+      alert('The input is wrong');
+    }
+  },
+
+  displayResults(type = 'array') {
+    if (type === 'array') console.log(this.answer2);
+    else if (type === 'string') {
+      console.log(`Poll results are ${answerArr.toString()}`);
+    }
+  },
 };
-
-const textFormatter = function () {
-  let text = `${poll.question}\n`;
-  for (const option of poll.options.values()) {
-    text = text + `${option}\n`;
-  }
-  text = text + '(Write option number)';
-  return text;
-};
-
-const displayResults = function (answerArr, type = 'object') {
-  if (type) console.log(answerArr);
-  else console.log(`Poll results are ${answerArr.toString()}`);
-};
-
-const answerColletor = function () {
-  const answer = Number(prompt(textFormatter()));
-  if (answer in [0, 1, 2, 3]) this.answers[answer]++;
-  else alert('The input is wrong');
-
-  const answerArr = this.answers;
-  console.log(answerArr);
-  const type = typeof answerArr;
-  console.log(type);
-  displayResults(answerArr, type);
-};
-
-poll.registerNewAnswer = answerColletor.bind(poll);
 
 document
   .querySelector('.poll')
-  .addEventListener('click', poll.registerNewAnswer);
+  .addEventListener('click', registerNewAnswer.bind(poll2));
 
-// answerColletor.call(poll);
-console.log(poll);
-
-// console.log(poll);
-// console.log(optionFormatter.bind(poll));
-
-// console.log(answer, typeof answer);
-
-// for (let [idx, value] of poll.answers.entries()) {
-
-// }
+//   console.log(poll2)
