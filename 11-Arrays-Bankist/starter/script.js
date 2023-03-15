@@ -74,3 +74,55 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// splice & slice`
+
+const arr = ['a', 'b', 'c', 'd', 'e'];
+const arrReverse = arr.reverse();
+console.log(arrReverse);
+
+console.log(arr.slice(2));
+console.log(arr);
+
+console.log(arr.splice(2));
+console.log(arr); // original array has been changed because spliced part has been taken
+
+const numbers = [65, 44, 12, 4];
+
+const list = [
+  {
+    name: 'Onur',
+    age: 32,
+  },
+  {
+    name: 'Rachel',
+    age: 29,
+  },
+];
+
+// Question 1, requested output: ['Onur is 32 years old', 'Rachel is 29 years old']
+// You have to use array map function
+
+const output = list.map(({ name, age }) => `${name} is ${age} years old`);
+console.log(output);
+
+// Question 2, get sum of everyone's age requested output: 61
+// You have to use array reduce function
+
+const totalAge = list.reduce(
+  (accumulator, currentValue) => accumulator + currentValue.age,
+  0
+);
+console.log(totalAge);
+
+// Question 3, filter out names starting with 'R'. Requested output: [{name: 'Onur', age: 32}]
+// You have to use array filter function
+
+// const noR = list.filter(({ name, age }) => {
+//   if (name[0] !== 'R') return name, age;
+// });
+
+const noR = list.filter(({ name }) => {
+  if (name[0] !== 'R') return true;
+});
+console.log(noR);
