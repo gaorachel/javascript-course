@@ -279,3 +279,22 @@ console.log(movements);
 // Refactor
 movements.sort((a, b) => b - a);
 console.log(movements);
+
+const empetyArr = new Array(7);
+console.log(empetyArr);
+console.log(empetyArr.fill(1, 0, 3));
+console.log(empetyArr.fill(2, 1, 5));
+console.log(empetyArr.fill(0));
+
+const numArr = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(numArr);
+
+const numArr2 = Array.from([1, 1, 1, 1], x => 2 * x);
+console.log(numArr2);
+
+console.log(Math.trunc(Math.random() * 6) + 1);
+const ramDice = Array.from(
+  { length: 100 },
+  el => Math.trunc(Math.random() * 6) + 1
+);
+console.log(ramDice);
