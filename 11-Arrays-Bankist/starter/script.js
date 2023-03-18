@@ -100,6 +100,10 @@ const list = [
   },
 ];
 
+console.table(list);
+
+console.log(list.find(el => el.name === 'Rachel'));
+
 // Question 1, requested output: ['Onur is 32 years old', 'Rachel is 29 years old']
 // You have to use array map function
 
@@ -226,3 +230,52 @@ const totalDepositsUSD = movements
   .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
+
+/*
+ array.every() 
+ array.some()
+ array.find() -- to find first element
+ array.findLast()
+ array.findIndex()
+ array.sort() -- A to Z. For numbers, it is sorted as string
+
+*/
+const arr1 = [0, 1, 2, [3, 4]];
+console.log(arr1.flat());
+// Expected output: Array [0, 1, 2, 3, 4]
+
+const arr2 = [0, 1, 2, [[[3, 4]]]];
+console.log(arr2.flat(Infinity));
+console.log(arr2.flat(3));
+console.log(arr2.flat(2));
+console.table(arr2.flat(3));
+// Expected output: Array [0, 1, 2, Array [3, 4]]
+
+console.log(movements);
+
+// return <0, A, B (keep order)
+// return >0,  B, A (switch order)
+
+// Ascending
+movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a === b) return 0;
+  if (a < b) return -1;
+});
+console.log(movements);
+
+// Refactor
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+// Descending
+movements.sort((a, b) => {
+  if (a < b) return 1;
+  if (a === b) return 0;
+  if (a > b) return -1;
+});
+console.log(movements);
+
+// Refactor
+movements.sort((a, b) => b - a);
+console.log(movements);
