@@ -330,20 +330,24 @@ const dogs = [
 GOOD LUCK 😀
 */
 
-let dogs = [
+const dogs = [
   { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
   { weight: 8, curFood: 200, owners: ["Matilda"] },
   { weight: 13, curFood: 275, owners: ["Sarah", "John"] },
   { weight: 32, curFood: 340, owners: ["Michael"] },
 ];
 
-// Q1
-const dogsWithRecommendedFood = dogs.map(dog => {
-  return {
-    ...dog,
-    recommendedFood: Math.round(dog.weight ** 0.75 * 28),
-  };
-});
+// // Q1
+// const dogsWithRecommendedFood = dogs.map(dog => {
+//   return {
+//     ...dog,
+//     recommendedFood: Math.round(dog.weight ** 0.75 * 28),
+//   };
+// });
+
+dogs.forEach(dog =>
+  Math.trunc((dog.recommendedFood = dog.weight ** 0.75 * 28))
+);
 console.log(dogs);
 
 // Q2
@@ -357,13 +361,6 @@ const sarah = dogs.find(dog => {
 console.log(foodChecker(sarah));
 
 // Q3
-
-// const ownersEatTooMuch = dogs.every(
-//   dog => ((foodChecker(dog) === 'Eating too much') dog)
-//   return dog
-
-// );
-// console.log(ownersEatTooMuch);
 let ownersEatTooMuch = [];
 let ownersEatTooLittle = [];
 
@@ -376,6 +373,17 @@ dogs.map(dog => {
 ownersEatTooMuch = ownersEatTooMuch.flat();
 ownersEatTooLittle = ownersEatTooLittle.flat();
 console.log(ownersEatTooMuch, ownersEatTooLittle);
+
+// Another solution
+const ownersEatTooMuch2 = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch2);
+
+const ownersEatTooLittle2 = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle2);
 
 // Q4
 // "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
@@ -398,16 +406,26 @@ const eatingOkayChecker = dogs.some((dog, _, arr) => {
 
 console.log(eatingOkayChecker);
 
+//// Another solution
+const checkEatingOkay = dog =>
+  dog.curFood <= dog.recommendedFood * 1.1 &&
+  dog.curFood >= dog.recommendedFood * 0.9;
+
+console.log(dogs.some(checkEatingOkay));
+
 // Q7
 console.log(eatingOkayDogs);
 
+//another solution
+console.log(dogs.filter(checkEatingOkay));
+
 // Q8
-dogs.sort((a, b) => {
+const dogsSorted = dogs.sort((a, b) => {
   if (a.recommendedFood > b.recommendedFood) return 1;
   if (a.recommendedFood < b.recommendedFood) return -1;
   if (a.recommendedFood === b.recommendedFood) return 0;
 });
-console.log(dogs);
+console.log(dogsSorted);
 
 // dogsWithRecommendedFood.sort(({recommendedFood: recommendedFood1}, {recommendedFood: recommendedFood2}) => {
 //   return -1;
